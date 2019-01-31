@@ -1,0 +1,27 @@
+package elements;
+
+
+import java.util.List;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import com.paulhammant.ngwebdriver.ByAngular;
+
+public class FindElementIdentifierUsingNgRepeat  {
+	
+	WebDriver driver;
+
+	public FindElementIdentifierUsingNgRepeat(WebDriver driver) {
+		this.driver = driver;
+	}
+
+	protected List<WebElement> getTheListValueOfNgRepeatByIterationThroughColumn(String repeatIdentifier, String columnName){
+		return driver.findElements(ByAngular.repeater(repeatIdentifier).column(columnName));
+	}
+	
+	protected List<WebElement> getTheListValueOfNgRepeatBasedOnRowNumber(String repeatIdentifier, int rowId){
+		return driver.findElements(ByAngular.repeater(repeatIdentifier).row(rowId));
+	}
+
+}

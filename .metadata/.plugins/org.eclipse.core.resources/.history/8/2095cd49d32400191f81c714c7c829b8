@@ -1,0 +1,22 @@
+package elementIdenfier;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import com.paulhammant.ngwebdriver.ByAngular;
+
+public class FindElementIdentifierUsingModel  {
+	
+	WebDriver driver;
+
+	public FindElementIdentifierUsingModel(WebDriver driver) {
+		this.driver = driver;
+	}
+
+	public WebElement findElement(String identifier){
+		return driver.findElement(ByAngular.model(identifier));
+	}
+	
+
+}

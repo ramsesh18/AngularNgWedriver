@@ -1,0 +1,34 @@
+package elementIdenfier;
+
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+
+import com.paulhammant.ngwebdriver.ByAngular;
+
+public class FindElementIdentifierUsingNgOptions  {
+	
+	WebDriver driver;
+
+	public FindElementIdentifierUsingNgOptions(WebDriver driver) {
+		this.driver = driver;
+	}
+
+//	protected WebElement findElementUsingBinding(String repeatDropdownIdentifier){
+//		return driver.findElement(ByAngular.repeater("option in dayOptionsFLightNumber").column(repeatDropdownIdentifier));
+//	}
+	
+	public void findElementUsingSelect(String model,String Identifier){
+		Select select=new Select(driver.findElement(By.cssSelector(model)));
+		select.selectByVisibleText(Identifier.replaceAll("\\s",""));
+	}
+	
+	public WebElement selectAValueFromDropdownUsingNgOption(String ngOptionsValue){
+		return driver.findElement(ByAngular.options(ngOptionsValue));
+	}
+	
+	
+
+}

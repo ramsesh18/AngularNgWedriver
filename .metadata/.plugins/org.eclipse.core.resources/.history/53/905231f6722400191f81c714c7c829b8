@@ -1,0 +1,23 @@
+package elements;
+
+import org.openqa.selenium.WebDriver;
+
+import elementIdenfier.FindElementIdentifierUsingNgOptions;
+
+
+public class Link {
+	WebDriver driver;
+	
+	
+	public Link(WebDriver driver){
+		   /** Creating an instance **/
+			this.driver = driver;
+	
+	}
+	
+	/** **/
+	public void getTheNameOfHyperLink(String model){
+		
+	}
+
+}

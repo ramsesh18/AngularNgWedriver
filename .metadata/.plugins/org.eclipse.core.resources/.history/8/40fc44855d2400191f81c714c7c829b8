@@ -1,0 +1,23 @@
+package elements;
+
+import org.openqa.selenium.WebDriver;
+
+
+public class Repeater {
+	WebDriver driver;
+	FindElementIdentifierUsingNgRepeat findelementidentifierusingngrepeat;
+	
+	public Repeater(WebDriver driver){
+		   /** Creating an instance **/
+			this.driver = driver;
+			this.findelementidentifierusingngrepeat = new FindElementIdentifierUsingNgRepeat(driver);
+	}
+	
+	/** Below method is used to iterate the elements designed using ng-repeat. This method is
+	 *  used to find a specific value in the column.**/
+	public String selectASpecificValueFromTheColumn(String repeatIdentifier, String columnName, String textToFind){
+		return findelementidentifierusingngrepeat.getTheDesiredValueFromListUsingNgRepeat(repeatIdentifier, columnName).
+				stream().filter(x -> textToFind.equals(x.getText())).findAny().orElse(null).getText();
+	}
+
+}

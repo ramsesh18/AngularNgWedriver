@@ -1,0 +1,44 @@
+package elements;
+
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class CheckBoxTextModel {
+	WebDriver driver;
+	FindElementIdentifierUsingCss findelementidentifierusingcss;
+	
+	public CheckBoxTextModel(WebDriver driver){
+		   //Creating an instance of NgWebDriver
+			this.driver = driver;
+			this.findelementidentifierusingcss = new FindElementIdentifierUsingCss(driver);
+	}
+	
+	/** Below method is used to check if the checkbox is Enabled**/
+	public boolean isEnabled(String modelName){
+	        return findelementidentifierusingcss.findElement(modelName).isEnabled();
+
+	}
+	
+	/** Below method is used to check if the checkbox is Displayed**/
+	public boolean isDisplayed(String modelName){
+        return findelementidentifierusingcss.findElement(modelName).isDisplayed();
+	}
+	
+	
+	/** Below method is used to check if the checkbox is Selected**/
+	public boolean isSelected(String modelName){
+        return findelementidentifierusingcss.findElement(modelName).isSelected();
+	}
+	
+	/** Below method is used to select / deselect checkbox**/
+	public void selectOrDeselectCheckbox(String modelName){
+        findElement(modelName).click();
+	}
+	
+	/** **/
+	protected WebElement findElement(String identifier){
+		return driver.findElement(By.cssSelector(identifier));
+	}
+}

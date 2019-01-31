@@ -1,0 +1,85 @@
+package elements;
+
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import com.paulhammant.ngwebdriver.ByAngular;
+
+
+public class InputTextModel  {
+
+	WebDriver driver;
+
+	
+	public InputTextModel(WebDriver driver){
+		   //Creating an instance of NgWebDriver
+	
+		this.driver = driver;
+	}
+	
+	/** ng-model: Below method is used to clear a text in a textbox**/
+	public void clearTextValue(String modelName){
+		FindElementIdentifierUsingModel findelementidentifier = new FindElementIdentifierUsingModel(driver);
+		findelementidentifier.findElement(modelName).clear();;
+		findElement(modelName).clear();
+		//driver.findElement(ByAngular.model(modelName)).clear();
+	}
+	
+	/** ng-model: Below method is used to enter text in a textbox**/
+	public void setTextValue(String modelName, String inputText){
+		FindElementIdentifierUsingModel findelementidentifier = new FindElementIdentifierUsingModel(driver);
+		findelementidentifier.findElement(modelName).sendKeys(inputText);
+		//findElement(modelName).sendKeys(inputText);
+	}
+	
+	/** ng-model: Below method is used to get text from a field**/
+	public String getTextValue(String modelName, String inputText){
+		return findElement(modelName).getText();
+	}
+	
+	/** ng-model: Below method is used to check if the textbox is enabled**/
+	public boolean isEnabled(String modelName){
+        return findElement(modelName).isEnabled();
+	}
+	
+	/** ng-model: Below method is used to check if the textbox is displayed or not**/
+	public boolean isDisplayed(String modelName){
+		return findElement(modelName).isDisplayed();
+	}
+	
+	/** ng-model: Below method is used to get the value of text**/
+	public String inputTextModelToGetTheValueOfTheTextBox(String modelName){
+		return findElement(modelName).getText();
+	}
+	
+	/** ng-model: Below method is used to get the value of text**/ 
+	public WebElement cssContainingText(String modelName, String inputText){
+		return findElementUsingCss(modelName, inputText);
+	}
+	
+	
+	/** ng-model: Below method is used to get the first value returned using Auto Complete
+	 * @throws InterruptedException **/
+	public void selectAutocompleteFirstValue(String modelName) throws InterruptedException{
+		Thread.sleep(2000);
+		findElement(modelName).sendKeys(Keys.ARROW_DOWN);
+		findElement(modelName).sendKeys(Keys.ENTER);
+	}
+	
+//
+//	    public List<String> visibleTodoItems() {
+//	        return findAll(ByAngular.repeater("todo in todos"))
+//	                  .stream()
+//	                  .map(WebElement::getText)
+//	                  .collect(Collectors.toList());
+
+	
+	protected WebElement findElement(String identifier){
+		return driver.findElement(ByAngular.model(identifier));
+	}
+	
+	protected WebElement findElementUsingCss(String identifier, String inputText){
+		return driver.findElement(ByAngular.cssContainingText(identifier, inputText));
+	}
+}

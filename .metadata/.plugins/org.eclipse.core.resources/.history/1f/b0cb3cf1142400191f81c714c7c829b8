@@ -1,0 +1,20 @@
+package elements;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import com.paulhammant.ngwebdriver.ByAngular;
+
+public class FindElementIdentifier extends InputTextModel {
+	
+
+
+	public FindElementIdentifier(WebDriver driver) {
+		super(driver);
+		// TODO Auto-generated constructor stub
+	}
+
+	protected WebElement findElement(String identifier){
+		return driver.findElement(ByAngular.model(identifier));
+	}
+}

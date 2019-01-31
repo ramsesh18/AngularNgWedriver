@@ -1,0 +1,39 @@
+package elements;
+
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
+
+import java.util.List;
+
+import junit.framework.Assert;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import com.paulhammant.ngwebdriver.ByAngular;
+
+public class CheckBoxTextModel {
+	WebDriver driver;
+
+	
+	public CheckBoxTextModel(WebDriver driver){
+		   //Creating an instance of NgWebDriver
+	
+		this.driver = driver;
+	}
+	
+	/** ng-model: Below method is used to check if the checkbox is enabled**/
+	public boolean isEnabled(String modelName){
+	        return findElement(modelName).isEnabled();
+        
+ 
+	}
+	
+	
+	/** **/
+	protected WebElement findElement(String identifier){
+	
+		return driver.findElement(By.cssSelector(identifier));
+	}
+}

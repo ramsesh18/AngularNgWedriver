@@ -1,0 +1,37 @@
+package elementIdenfier;
+
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+
+import com.paulhammant.ngwebdriver.ByAngular;
+
+public class FindElementIdentifierUsingNgOptions extends GlobalInitializer{
+	
+	
+
+	public FindElementIdentifierUsingNgOptions(WebDriver driver) {
+		super(driver);
+		//this.driver = driver;
+	}
+
+//	protected WebElement findElementUsingBinding(String repeatDropdownIdentifier){
+//		return driver.findElement(ByAngular.repeater("option in dayOptionsFLightNumber").column(repeatDropdownIdentifier));
+//	}
+	
+	public void findElementUsingSelect(String model,String Identifier){
+		Select select=new Select(driver.findElement(By.cssSelector(model)));
+		select.selectByVisibleText(Identifier.replaceAll("\\s",""));
+	}
+	
+	public List<WebElement> selectAValueFromDropdownUsingNgOption(String ngOptionsValue){
+		return driver.findElements(ByAngular.options(ngOptionsValue));
+	}
+	
+	
+
+}

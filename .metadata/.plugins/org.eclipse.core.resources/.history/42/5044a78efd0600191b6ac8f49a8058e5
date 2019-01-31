@@ -1,0 +1,64 @@
+package elements;
+
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+
+
+public class InputTextModel  {
+
+	WebDriver driver;
+	FindElementIdentifier findElementidentifier = new FindElementIdentifier(driver);
+	
+	public InputTextModel(WebDriver driver){
+		   //Creating an instance of NgWebDriver
+		this.driver = driver;
+	}
+	
+	/** ng-model: Below method is used to clear a text in a textbox**/
+	public void clearTextValue(String modelName){
+		findElementidentifier.findElement(modelName).clear();
+		//driver.findElement(ByAngular.model(modelName)).clear();
+	}
+	
+	/** ng-model: Below method is used to enter text in a textbox**/
+	public void setTextValue(String modelName, String inputText){
+		findElementidentifier.findElement(modelName).sendKeys(inputText);
+	}
+	
+	/** ng-model: Below method is used to get text from a field**/
+	public String getTextValue(String modelName, String inputText){
+		return findElementidentifier.findElement(modelName).getText();
+	}
+	
+	/** ng-model: Below method is used to check if the textbox is enabled**/
+	public boolean isEnabled(String modelName){
+        return findElementidentifier.findElement(modelName).isEnabled();
+	}
+	
+	/** ng-model: Below method is used to check if the textbox is displayed or not**/
+	public boolean isDisplayed(String modelName){
+		return findElementidentifier.findElement(modelName).isDisplayed();
+	}
+	
+	/** ng-model: Below method is used to check if the textbox is displayed or not**/
+	public String inputTextModelToGetTheValueOfTheTextBox(String modelName){
+		return findElementidentifier.findElement(modelName).getText();
+	}
+	
+	/** ng-model: Below method is used to get the first value returned using Auto Complete
+	 * @throws InterruptedException **/
+	public void selectAutocompleteFirstValue(String modelName) throws InterruptedException{
+		Thread.sleep(2000);
+		findElementidentifier.findElement(modelName).sendKeys(Keys.ARROW_DOWN);
+		findElementidentifier.findElement(modelName).sendKeys(Keys.ENTER);
+	}
+	
+//
+//	    public List<String> visibleTodoItems() {
+//	        return findAll(ByAngular.repeater("todo in todos"))
+//	                  .stream()
+//	                  .map(WebElement::getText)
+//	                  .collect(Collectors.toList());
+
+	
+}

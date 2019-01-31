@@ -1,0 +1,29 @@
+package elements;
+
+import org.openqa.selenium.WebDriver;
+
+import elementIdenfier.FindElementIdentifierUsingNgOptions;
+
+
+public class DropDownLists {
+	WebDriver driver;
+	FindElementIdentifierUsingNgOptions findelementidentifierusingngoptions;
+	
+	public DropDownLists(WebDriver driver){
+		   /** Creating an instance **/
+			this.driver = driver;
+			this.findelementidentifierusingngoptions = new FindElementIdentifierUsingNgOptions(driver);
+	}
+	
+	/** Below method is used to select a value from the select - element without using ng-options**/
+	public void selectASpecificValueFromTheList(String model,String dropDownValue){
+		findelementidentifierusingngoptions.findElementUsingSelect(model,dropDownValue);
+	}
+	
+	/** Below method is used to select a value from the select - element using ng-options**/
+	public String selectASpecificValueFromTheListUsingNgOptions(String options,String dropDownValue){
+		return findelementidentifierusingngoptions.selectAValueFromDropdownUsingNgOption(options).
+		stream().filter(x -> dropDownValue.equals(x.getText())).findAny().orElse(null).getText();
+	}
+
+}

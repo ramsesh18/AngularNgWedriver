@@ -1,0 +1,32 @@
+package elements;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class Browser  {
+	
+
+	   WebDriver driver;
+	public Browser(WebDriver object) {
+		this.driver = object;
+	}
+
+	public static void setUpClasspath(String classPath){
+		
+		System.setProperty("webdriver.chrome.driver",classPath);
+		System.out.println("Classpath has been set to " +classPath);
+		
+	}
+	
+	 public WebDriver firefox() {
+	        return new FirefoxDriver();
+	 }
+
+	 public WebDriver chrome() {
+	    	
+		 driver.manage().window().maximize();
+	        return new ChromeDriver();
+	    }
+	}
+

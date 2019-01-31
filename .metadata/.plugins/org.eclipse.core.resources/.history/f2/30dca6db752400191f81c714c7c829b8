@@ -1,0 +1,29 @@
+package elements;
+
+import org.openqa.selenium.WebDriver;
+
+import elementIdenfier.FindElementIdentifierUsingButtonText;
+import elementIdenfier.FindElementIdentifierUsingNgOptions;
+
+
+public class Button {
+	WebDriver driver;
+	FindElementIdentifierUsingButtonText findelementidentifierusingbuttontext;
+	
+	public Button(WebDriver driver){
+		   /** Creating an instance **/
+			this.driver = driver;
+			this.findelementidentifierusingbuttontext = new FindElementIdentifierUsingButtonText(driver);
+	}
+	
+	/**
+	 * This method takes the name of the button as input
+	 * and click it using the name.
+	 * Beware: If there are two buttons in the frame with same name, this might not work as expected
+	 * @param nameOfTheButton
+	 */
+	 public void clickTheButton(String nameOfTheButton){
+			findelementidentifierusingbuttontext.button(nameOfTheButton);
+	}
+
+}

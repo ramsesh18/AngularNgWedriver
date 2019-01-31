@@ -1,0 +1,36 @@
+package elements;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class Browser  {
+	
+
+	   WebDriver driver;
+	public Browser(WebDriver driver) {
+		this.driver = driver;
+	}
+
+	public static void setUpClasspath(String classPath){
+		
+		System.setProperty("webdriver.chrome.driver",classPath);
+		System.out.println("Classpath has been set to " +classPath);
+		
+	}
+	
+	 public WebDriver firefox() {
+	        return new FirefoxDriver();
+	 }
+
+	 public WebDriver chrome() {
+	    	
+			ChromeOptions options = new ChromeOptions();
+		//	driver.manage().window().maximize();
+			options.addArguments("--start-maximized");
+			driver = new ChromeDriver();
+	        return driver;
+	    }
+	}
+

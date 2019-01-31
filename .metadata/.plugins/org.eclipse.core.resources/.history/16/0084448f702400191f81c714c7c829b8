@@ -1,0 +1,102 @@
+package elements;
+
+import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+/**
+ * 
+ * @author RamaseshanT
+ *
+ */
+
+public class Repeater {
+	WebDriver driver;
+	FindElementIdentifierUsingNgRepeat findelementidentifierusingngrepeat;
+	
+	public Repeater(WebDriver driver){
+		   /** Creating an instance **/
+			this.driver = driver;
+			this.findelementidentifierusingngrepeat = new FindElementIdentifierUsingNgRepeat(driver);
+	}
+	
+	/**
+	 * 	Below method is used to iterate the elements designed using ng-repeat. This method is
+	 *  used to find a specific value in the column. 
+	 *  example: selectASpecificValueFromTheColumn("region in regionCountries", "cityName", "Belem, BR")
+	 * @param repeatIdentifier
+	 * @param columnName
+	 * @param textToFind
+	 * @return the selected text	
+	 */
+	public String selectASpecificValueFromTheColumn(String repeatIdentifier, String columnName, String textToFind){
+		return findelementidentifierusingngrepeat.getTheListValueOfNgRepeatByIterationThroughColumn(repeatIdentifier, columnName).
+				stream().filter(x -> textToFind.equals(x.getText())).findAny().orElse(null).getText();
+	}
+	
+	/**
+	 * Below method is to get all the values of ng-repeat elements. 
+	 * The user will have to iterate through the list and get the expected value.
+	 * @param repeatIdentifier - example: getAllValuesIncludingRowAndColumnInNgRepeat("region in regionCountries")
+	 * @return all the row and column items
+	 */
+	public List<WebElement> getAllValuesIncludingRowAndColumnInNgRepeat(String repeatIdentifier){
+		return findelementidentifierusingngrepeat.getAllTheListValueOfNgRepeat(repeatIdentifier);
+	}
+	
+	/**
+	 * This method navigates to the row Id mentioned in the method
+	 * and returns the text of that row. 
+	 * @param repeatIdentifier
+	 * @param rowId
+	 * @return Value of the rowId
+	 */
+	
+	public String selectValuesBasedOnRowId(String repeatIdentifier, int rowId){
+		return findelementidentifierusingngrepeat.getTheListValueOfNgRepeatBasedOnRowNumber(repeatIdentifier,rowId)
+				.getText();
+	}
+	
+	/**
+	 * This method navigates to the row Id mentioned in the method
+	 * and click 
+	 * @param repeatIdentifier
+	 * @param rowId
+	 * 
+	 */
+	public void selectValuesBasedOnRowIdAndClick (String repeatIdentifier, int rowId){
+		findelementidentifierusingngrepeat.getTheListValueOfNgRepeatBasedOnRowNumber(repeatIdentifier,rowId)
+			   .click();;
+	}
+
+	/**
+	 * This method navigates to the element using rowId and column name and would 
+	 * retrieve the value
+	 * @param repeatIdentifier
+	 * @param rowId
+	 * @param columnName
+	 * @return
+	 */
+	public String selectValuesBasedOnRowIdAndColumnName(String repeatIdentifier, int rowId,String columnName){
+		return findelementidentifierusingngrepeat.getTheListValueOfNgRepeatBasedOnRowNumberAndColumnName(repeatIdentifier,rowId,columnName)
+				.getText();
+				
+	}
+	
+	/**
+	 *  This method navigates to the element using rowId and column name and would 
+	 *  click it
+	 * @param repeatIdentifier
+	 * @param rowId
+	 * @param columnName
+	 * 
+	 */
+	public void selectValuesBasedOnRowIdAndColumnNameAndClickIt(String repeatIdentifier, int rowId,String columnName){
+		 findelementidentifierusingngrepeat.getTheListValueOfNgRepeatBasedOnRowNumberAndColumnName(repeatIdentifier,rowId,columnName)
+				.click();
+				
+	}
+
+}

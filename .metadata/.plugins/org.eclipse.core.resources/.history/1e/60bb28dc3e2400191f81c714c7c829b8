@@ -1,0 +1,173 @@
+package testngangular;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import com.paulhammant.ngwebdriver.ByAngular;
+import com.paulhammant.ngwebdriver.ByAngularModel;
+import com.paulhammant.ngwebdriver.NgWebDriver;
+
+import elements.Browser;
+import elements.CheckBoxTextModel;
+import elements.DropDownLists;
+import elements.Elements;
+import elements.InputTextModel;
+import elements.RadioButtonModel;
+
+public class NewTest {
+	
+	WebDriver driver;
+	static NgWebDriver ngdriver;
+	String bindingModelName = "flightbooking.adults";
+	String bindingPartialModelName = "flightbooking";
+	 String modelName = "booking.originSearchString";
+	 String listOptions = "item for item in range(1, defaults.travelers.adults.max) track by item";
+	  String input = "Toronto";
+	  String textToSelect = "2";
+	  
+	 
+	
+	 
+	@BeforeTest
+	public void beforeClass() {
+		System.setProperty("webdriver.chrome.driver","lib/chromedriver.exe");
+	}
+	
+	@Test
+	 public void lauchBrowser() throws InterruptedException{
+		
+		
+		ChromeOptions options = new ChromeOptions();
+	//	driver.manage().window().maximize();
+		options.addArguments("--start-maximized");
+		driver = new ChromeDriver();
+
+
+	  //Sample AngularJs Webpage
+	//  driver.get("https://sp.booking.com/index.html?aid=811211&lang=en&label=copaair-Homepage-menubar/viajar-EN");
+		driver.get("https://www.copaair.com/en/web/gs/home");
+
+
+	   //Creating an instance of NgWebDriver
+	  ngdriver = new NgWebDriver((JavascriptExecutor) driver);
+	  
+
+	  Elements elements = new Elements(driver);
+	  InputTextModel input = new InputTextModel(driver);
+	  CheckBoxTextModel checkbox =  new CheckBoxTextModel(driver);
+	  
+	  RadioButtonModel radio =  new RadioButtonModel(driver);
+	  DropDownLists dd = new DropDownLists(driver);
+//	  driver.findElement(By.xpath("//*[@id='p_p_id_bookingmenu_WAR_copabookingmenuportlet_']/div/div/div/booking-menu/ul/li[5]/a/h2")).click();
+//	  Thread.sleep(3000);
+//	  
+//	  dd.selectASpecificValueFromTheList("#trDate", "Yesterday");
+	  
+	  
+	  driver.findElement(By.xpath("//*[@id='id_openOriginsModal']")).click();
+	  Thread.sleep(3000);
+	  System.out.println(driver.findElement(ByAngular.exactRepeater("option in dayOptionsFLightNumber").row(1)));
+	  
+	
+	  
+	//  input.setTextValue(modelName, "Toronto");
+	  
+//	  input.isEnabled(modelName);
+//	 System.out.println(checkbox.isEnabled("#frm > div.bui-checkbox.xp__travel-purpose > label"));
+//	 System.out.println(checkbox.isDisplayed("#frm > div.bui-checkbox.xp__travel-purpose > label"));
+//	 System.out.println(checkbox.isSelected("#frm > div.bui-checkbox.xp__travel-purpose > label"));
+//	 checkbox.selectOrDeselectCheckbox("#frm > div.bui-checkbox.xp__travel-purpose > label");
+ 
+ 
+	 // driver.findElement(By.cssSelector("#id_openOriginsModal")).click();;
+	  
+	  //String test = driver.findElement(ByAngular.repeater("colIndex in getNumberOfColumns(defaults.columnsByCountryRegion)").column(column)).getText();
+	 // System.out.println("*** " +test);;
+	  
+	  
+//	  ByAngular.repeater("foo in f").row(17)
+//	  ByAngular.repeater("foo in f").row(17).column("foo.name");
+//	  ByAngular.repeater("foo in f").column("foo.name")
+	//  System.out.println(modelName+"++++" +input);
+//	  input.inputTextModelToSendData(modelName, "Tor");
+//	  input.inputTextModelToSelectAutoCompleteValues(modelName);
+	//  System.out.println("Output: " +input.inputTextModelToSendData(modelName, "Tor"));
+	  
+	 
+	  /** Text input using ng-model**/
+//	  input.setTextValue(modelName, "Toronto");
+	  
+	  
+//	  
+//	  /** Get list using ng-options**/
+//	 List<WebElement> options1 = elements.getListUsingOptions(listOptions);
+//	  
+//	 /** Iterate through the values in the dropdown **/
+//	 elements.iterateThroughTheList(options1, textToSelect ); 
+//	 
+//	 /** get the text based on ng-binding using the exact name**/
+//	 String var = elements.getTextBasedOnNgBinding(bindingModelName);
+	  
+
+
+//	 
+//	 /** get all the based on ng-binding using the partial name**/
+//	 List<WebElement> bindingName = elements.getTextBasedOnNgBindingUsingPartialName(bindingPartialModelName); 
+//	 
+//
+//	  for (WebElement option : bindingName) {
+//	
+//		  if (option.getText().equalsIgnoreCase("Adults (12+)")){
+//				 System.out.println(option.getText());
+//			
+//			 }
+//	 }
+//	
+//	  /** Button **/
+//	  driver.findElement(ByAngular.buttonText("Search")).click();;
+	  
+	// System.out.println(bindingName);
+	 
+
+	 
+	 
+	  
+	  
+	  
+	  
+	
+	  
+	  
+	  
+	//  call method(modelName,String);
+//	  
+//	  driver.findElement(ByAngular.model("name")).sendKeys("Test Company");
+//	  driver.findElement(ByAngular.model("employees")).sendKeys("1000");
+//	  driver.findElement(ByAngular.model("headoffice")).sendKeys("Mysore");
+//	  driver.findElement(ByAngular.buttonText("Submit")).click();
+	  
+	//  Thread.sleep(2000);
+	//  String txt = driver.findElement(ByAngular.repeater("company in companies").row(4).column("name")).getText();
+	//  System.out.println(txt + " Added.");
+	  
+//	  if(txt.equalsIgnoreCase("Test Company")){
+//	   System.out.println("New Company Added. Now remove it");
+//	   driver.findElement(ByAngular.repeater("company in companies").row(4)).findElement(ByAngular.buttonText("Remove")).click();
+//	  }
+
+	   Thread.sleep(3000);
+	//  driver.quit();
+	   
+	
+	 
+	}
+}

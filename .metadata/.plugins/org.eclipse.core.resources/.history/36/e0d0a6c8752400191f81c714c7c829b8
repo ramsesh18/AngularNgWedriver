@@ -1,0 +1,24 @@
+package elements;
+
+import org.openqa.selenium.WebDriver;
+
+import elementIdenfier.FindElementIdentifierUsingButtonText;
+import elementIdenfier.FindElementIdentifierUsingNgOptions;
+
+
+public class Button {
+	WebDriver driver;
+	FindElementIdentifierUsingButtonText findelementidentifierusingbuttontext;
+	
+	public Button(WebDriver driver){
+		   /** Creating an instance **/
+			this.driver = driver;
+			this.findelementidentifierusingbuttontext = new FindElementIdentifierUsingButtonText(driver);
+	}
+	
+	/** **/
+	public void clickTheButton(String nameOfTheButton){
+			findelementidentifierusingbuttontext.button(nameOfTheButton);
+	}
+
+}

@@ -1,0 +1,37 @@
+package elements;
+
+import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+
+public class Repeater {
+	WebDriver driver;
+	FindElementIdentifierUsingNgRepeat findelementidentifierusingngrepeat;
+	
+	public Repeater(WebDriver driver){
+		   /** Creating an instance **/
+			this.driver = driver;
+			this.findelementidentifierusingngrepeat = new FindElementIdentifierUsingNgRepeat(driver);
+	}
+	
+	/** Below method is used to iterate the elements designed using ng-repeat. This method is
+	 *  used to find a specific value in the column. 
+	 *  example: selectASpecificValueFromTheColumn("region in regionCountries", "cityName", "Belem, BR")**/
+	public String selectASpecificValueFromTheColumn(String repeatIdentifier, String columnName, String textToFind){
+		return findelementidentifierusingngrepeat.getTheListValueOfNgRepeatByIterationThroughColumn(repeatIdentifier, columnName).
+				stream().filter(x -> textToFind.equals(x.getText())).findAny().orElse(null).getText();
+	}
+	
+	public List<WebElement> getAllValuesIncludingRowAndColumnInNgRepeat(String repeatIdentifier, String columnName, String textToFind){
+		return findelementidentifierusingngrepeat.getAllTheListValueOfNgRepeat(repeatIdentifier).
+				stream().sorted().collect(Collectors.toList());
+	}
+	
+	
+	
+
+}

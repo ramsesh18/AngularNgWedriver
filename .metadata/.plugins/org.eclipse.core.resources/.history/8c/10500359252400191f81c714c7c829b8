@@ -1,0 +1,39 @@
+package elements;
+
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class RadioButtonModel {
+	WebDriver driver;
+
+	
+	public RadioButtonModel(WebDriver driver){
+		   //Creating an instance of NgWebDriver
+			this.driver = driver;
+	}
+	
+	/** Below method is used to check if the radiobutton is Enabled**/
+	public boolean isEnabled(String modelName){
+	        return findElement(modelName).isEnabled();
+
+	}
+	
+	/** Below method is used to check if the radiobutton is Displayed**/
+	public boolean isDisplayed(String modelName){
+        return findElement(modelName).isDisplayed();
+	}
+	
+	
+	/** Below method is used to check if the radiobutton is Selected**/
+	public boolean isSelected(String modelName){
+        return findElement(modelName).isSelected();
+	}
+	
+	
+	/** **/
+	protected WebElement findElement(String identifier){
+		return driver.findElement(By.cssSelector(identifier));
+	}
+}

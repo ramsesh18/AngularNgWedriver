@@ -1,0 +1,21 @@
+package elements;
+
+import org.openqa.selenium.WebDriver;
+
+
+public class DropDownLists {
+	WebDriver driver;
+	FindElementIdentifierUsingCss findelementidentifierusingcss;
+	
+	public DropDownLists(WebDriver driver){
+		   /** Creating an instance **/
+			this.driver = driver;
+			this.findelementidentifierusingcss = new FindElementIdentifierUsingCss(driver);
+	}
+	
+	/** Below method is used to check if the checkbox is Enabled**/
+	public boolean isEnabled(String modelName){
+	        return findelementidentifierusingcss.findElement(modelName).isEnabled();
+	}
+
+}

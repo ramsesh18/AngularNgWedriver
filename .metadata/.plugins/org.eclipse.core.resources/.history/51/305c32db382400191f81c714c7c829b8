@@ -1,0 +1,21 @@
+package elements;
+
+import org.openqa.selenium.WebDriver;
+
+
+public class DropDownLists {
+	WebDriver driver;
+	FindElementIdentifierUsingNgRepeat findelementidentifierusingngrepeat;
+	
+	public DropDownLists(WebDriver driver){
+		   /** Creating an instance **/
+			this.driver = driver;
+			this.findelementidentifierusingngrepeat = new FindElementIdentifierUsingNgRepeat(driver);
+	}
+	
+	/** Below method is used to check if the checkbox is Enabled**/
+	public void selectASpecificValueFromTheList(String dropDownValue){
+	         findelementidentifierusingngrepeat.findElementUsingBinding(dropDownValue);
+	}
+
+}
